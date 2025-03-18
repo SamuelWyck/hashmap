@@ -40,6 +40,7 @@ class HashMap {
         }
 
         current.next = {"key": key, "value": value, "next": null};
+        this._length += 1;
     };
 
 
@@ -49,6 +50,7 @@ class HashMap {
 
         if (entry === undefined) {
             this.buckets[hash] = {"key": key, "value": value, "next": null};
+            this._length += 1;
             return;
         }
 
@@ -92,6 +94,7 @@ class HashMap {
             entry = entry.next;
             entry = (entry === null) ? undefined : entry;
             this.buckets[hash] = entry;
+            this._length -= 1;
             return true;
         }
 
@@ -100,6 +103,7 @@ class HashMap {
         while (current.next !== null) {
             if (current.next.key === key) {
                 current.next = current.next.next;
+                this._length -= 1;
                 return true;
             }
             current = current.next;
@@ -130,14 +134,18 @@ hashMap.set("jacob", 5)
 hashMap.set("jAcob", 8)
 hashMap.set("jaCob", 19)
 console.log(hashMap.length)
+hashMap.set("jacob", 7)
+console.log(hashMap.length)
 
 console.log(hashMap.buckets)
 
 hashMap.remove("jAcob")
+console.log(hashMap.length)
 
 console.log(hashMap.buckets)
 
 hashMap.remove("jacob")
+console.log(hashMap.length)
 
 console.log(hashMap.buckets)
 
