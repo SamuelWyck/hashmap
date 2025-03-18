@@ -26,7 +26,7 @@ class HashMap {
     };
 
 
-    #growHashMap() {
+    #growHashMap(length) {
         const entries = this.entries();
         this.buckets = [];
         this.capacity = this.capacity * 2;
@@ -36,6 +36,7 @@ class HashMap {
             const value = entry[1];
             this.set(key, value);
         }
+        this._length = length;
     };
 
 
@@ -69,7 +70,7 @@ class HashMap {
         }
 
         if (this._length > (this.capacity * this.loadFactor)) {
-            this.#growHashMap();
+            this.#growHashMap(this._length);
         }
     };
 
@@ -222,17 +223,34 @@ const hashMap = new HashMap()
 
 console.log(hashMap.buckets)
 
+
+hashMap.set("apple", "red")
+hashMap.set("banana", "yellow")
+hashMap.set("carrot", "orange")
+hashMap.set("dog", "brown")
+hashMap.set("elephant", "gray")
+hashMap.set("frog", "green")
+hashMap.set("grape", "purple")
+hashMap.set("hat", "black")
+hashMap.set("ice cream", "white")
+hashMap.set("jacket", "blue")
+hashMap.set("kite", "pink")
+hashMap.set("lion", "golden")
+
+
+console.log(hashMap.buckets)
+console.log(hashMap.length)
+
 hashMap.set("jacob", 5)
 hashMap.set("jAcob", 8)
 hashMap.set("jaCob", 19)
 console.log(hashMap.length)
 hashMap.set("job", 7)
-console.log(hashMap.length)
 console.log(hashMap.get("job"))
 
 console.log(hashMap.buckets)
 hashMap.remove("jaCob")
 
-console.log(hashMap.keys())
-console.log(hashMap.values())
-console.log(hashMap.entries())
+// console.log(hashMap.keys())
+// console.log(hashMap.values())
+// console.log(hashMap.entries())
