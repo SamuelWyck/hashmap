@@ -14,7 +14,7 @@ class HashMap {
     };
 
 
-    hash(key) {
+    #hash(key) {
         let hashCode = 0;
 
         const primeNumber = 31;
@@ -26,7 +26,7 @@ class HashMap {
     };
 
 
-    setEntry(entry, key, value) {
+    #setEntry(entry, key, value) {
         let current = entry;
         while (true) {
             if (current.key === key) {
@@ -45,7 +45,7 @@ class HashMap {
 
 
     set(key, value) {
-        const hash = this.hash(key);
+        const hash = this.#hash(key);
         const entry = this.buckets[hash];
 
         if (entry === undefined) {
@@ -54,11 +54,11 @@ class HashMap {
             return;
         }
 
-        this.setEntry(entry, key, value);
+        this.#setEntry(entry, key, value);
     };
 
 
-    getEntry(entry, key) {
+    #getEntry(entry, key) {
         let current = entry;
 
         while (current !== null) {
@@ -73,14 +73,14 @@ class HashMap {
 
 
     get(key) {
-        const hash = this.hash(key);
+        const hash = this.#hash(key);
         const entry = this.buckets[hash];
 
         if (entry === undefined) {
             return null;
         }
 
-        return this.getEntry(entry, key);
+        return this.#getEntry(entry, key);
     };
 
 
@@ -89,7 +89,7 @@ class HashMap {
     };
 
 
-    removeEntry(entry, key, hash) {
+    #removeEntry(entry, key, hash) {
         if (entry.key === key) {
             entry = entry.next;
             entry = (entry === null) ? undefined : entry;
@@ -114,14 +114,14 @@ class HashMap {
 
 
     remove(key) {
-        const hash = this.hash(key);
+        const hash = this.#hash(key);
         const entry = this.buckets[hash];
 
         if (entry === undefined) {
             return false;
         }
 
-        return this.removeEntry(entry, key, hash);
+        return this.#removeEntry(entry, key, hash);
     };
 
 
@@ -166,6 +166,7 @@ hashMap.set("jaCob", 19)
 console.log(hashMap.length)
 hashMap.set("job", 7)
 console.log(hashMap.length)
+console.log(hashMap.get("job"))
 
 console.log(hashMap.buckets)
 hashMap.remove("jaCob")
