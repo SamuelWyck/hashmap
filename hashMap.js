@@ -74,6 +74,11 @@ class HashMap {
 
         return this.getEntry(entry, key);
     };
+
+
+    has(key) {
+        return this.get(key) !== null;
+    };
 };
 
 
@@ -82,8 +87,10 @@ const hashMap = new HashMap()
 console.log(hashMap.buckets)
 
 hashMap.set("jacob", 5)
-// hashMap.set("jAcob", 8)
+hashMap.set("jAcob", 8)
 
 console.log(hashMap.buckets)
 
 console.log(hashMap.get("jAcob"))
+
+console.log(hashMap.has("jAcb"))
