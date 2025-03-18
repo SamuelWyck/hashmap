@@ -2,7 +2,7 @@
 class HashMap {
 
     constructor() {
-        this.load_factor = .75;
+        this.loadFactor = .75;
         this.capacity = 16;
         this.buckets = [];
         this._length = 0;
@@ -23,6 +23,19 @@ class HashMap {
         }
 
         return hashCode;
+    };
+
+
+    #growHashMap() {
+        const entries = this.entries();
+        this.buckets = [];
+        this.capacity = this.capacity * 2;
+
+        for (let entry of entries) {
+            const key = entry[0];
+            const value = entry[1];
+            this.set(key, value);
+        }
     };
 
 
@@ -51,10 +64,13 @@ class HashMap {
         if (entry === undefined) {
             this.buckets[hash] = {"key": key, "value": value, "next": null};
             this._length += 1;
-            return;
+        } else {
+            this.#setEntry(entry, key, value);
         }
 
-        this.#setEntry(entry, key, value);
+        if (this._length > (this.capacity * this.loadFactor)) {
+            this.#growHashMap();
+        }
     };
 
 
