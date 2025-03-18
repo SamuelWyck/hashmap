@@ -48,16 +48,42 @@ class HashMap {
 
         this.setEntry(entry, key, value);
     };
+
+
+    getEntry(entry, key) {
+        let current = entry;
+
+        while (current !== null) {
+            if (current.key === key) {
+                return current.value;
+            }
+            current = current.next;
+        }
+
+        return null;
+    };
+
+
+    get(key) {
+        const hash = this.hash(key);
+        const entry = this.buckets[hash];
+
+        if (entry === undefined) {
+            return null;
+        }
+
+        return this.getEntry(entry, key);
+    };
 };
 
 
 const hashMap = new HashMap()
 
-console.log(hashMap.hash("jAcob"))
-
 console.log(hashMap.buckets)
 
 hashMap.set("jacob", 5)
-hashMap.set("jAcob", 8)
+// hashMap.set("jAcob", 8)
 
 console.log(hashMap.buckets)
+
+console.log(hashMap.get("jAcob"))
