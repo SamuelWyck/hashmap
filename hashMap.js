@@ -176,6 +176,29 @@ class HashMap {
 
         return valueArray;
     };
+
+
+    #addEntries(entry, entriesArray) {
+        let current = entry;
+
+        while (current !== null) {
+            entriesArray.push([current.key, current.value]);
+            current = current.next;
+        }
+    };
+
+
+    entries() {
+        const entriesArray = [];
+
+        for (let entry of this.buckets) {
+            if (entry !== undefined) {
+                this.#addEntries(entry, entriesArray);
+            }
+        }
+
+        return entriesArray;
+    };
 };
 
 
@@ -196,3 +219,4 @@ hashMap.remove("jaCob")
 
 console.log(hashMap.keys())
 console.log(hashMap.values())
+console.log(hashMap.entries())
