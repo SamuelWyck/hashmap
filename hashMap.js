@@ -79,6 +79,40 @@ class HashMap {
     has(key) {
         return this.get(key) !== null;
     };
+
+
+    removeEntry(entry, key, hash) {
+        if (entry.key === key) {
+            entry = entry.next;
+            entry = (entry === null) ? undefined : entry;
+            this.buckets[hash] = entry;
+            return true;
+        }
+
+        let current = entry;
+
+        while (current.next !== null) {
+            if (current.next.key === key) {
+                current.next = current.next.next;
+                return true;
+            }
+            current = current.next;
+        }
+
+        return false;
+    };
+
+
+    remove(key) {
+        const hash = this.hash(key);
+        const entry = this.buckets[hash];
+
+        if (entry === undefined) {
+            return false;
+        }
+
+        return this.removeEntry(entry, key, hash);
+    };
 };
 
 
@@ -88,9 +122,16 @@ console.log(hashMap.buckets)
 
 hashMap.set("jacob", 5)
 hashMap.set("jAcob", 8)
+hashMap.set("jaCob", 19)
 
 console.log(hashMap.buckets)
 
-console.log(hashMap.get("jAcob"))
+hashMap.remove("jAcob")
 
-console.log(hashMap.has("jAcb"))
+console.log(hashMap.buckets)
+
+hashMap.remove("jacob")
+
+console.log(hashMap.buckets)
+
+console.log(hashMap.buckets[1])
