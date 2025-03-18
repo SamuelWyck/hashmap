@@ -5,6 +5,12 @@ class HashMap {
         this.load_factor = .75;
         this.capacity = 16;
         this.buckets = [];
+        this._length = 0;
+    };
+
+
+    get length() {
+        return this._length;
     };
 
 
@@ -123,6 +129,7 @@ console.log(hashMap.buckets)
 hashMap.set("jacob", 5)
 hashMap.set("jAcob", 8)
 hashMap.set("jaCob", 19)
+console.log(hashMap.length)
 
 console.log(hashMap.buckets)
 
