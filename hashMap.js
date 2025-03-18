@@ -123,6 +123,13 @@ class HashMap {
 
         return this.removeEntry(entry, key, hash);
     };
+
+
+    clear() {
+        this.buckets = [];
+        this.capacity = 16;
+        this._length = 0;
+    };
 };
 
 
@@ -139,14 +146,7 @@ console.log(hashMap.length)
 
 console.log(hashMap.buckets)
 
-hashMap.remove("jAcob")
-console.log(hashMap.length)
+hashMap.clear()
 
 console.log(hashMap.buckets)
-
-hashMap.remove("jacob")
 console.log(hashMap.length)
-
-console.log(hashMap.buckets)
-
-console.log(hashMap.buckets[1])
