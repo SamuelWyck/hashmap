@@ -219,37 +219,39 @@ class HashMap {
 };
 
 
-const hashMap = new HashMap()
+export default HashMap;
 
-console.log(hashMap.buckets)
+// const hashMap = new HashMap()
 
-
-hashMap.set("apple", "red")
-hashMap.set("banana", "yellow")
-hashMap.set("carrot", "orange")
-hashMap.set("dog", "brown")
-hashMap.set("elephant", "gray")
-hashMap.set("frog", "green")
-hashMap.set("grape", "purple")
-hashMap.set("hat", "black")
-hashMap.set("ice cream", "white")
-hashMap.set("jacket", "blue")
-hashMap.set("kite", "pink")
-hashMap.set("lion", "golden")
+// console.log(hashMap.buckets)
 
 
-console.log(hashMap.buckets)
-console.log(hashMap.length)
+// hashMap.set("apple", "red")
+// hashMap.set("banana", "yellow")
+// hashMap.set("carrot", "orange")
+// hashMap.set("dog", "brown")
+// hashMap.set("elephant", "gray")
+// hashMap.set("frog", "green")
+// hashMap.set("grape", "purple")
+// hashMap.set("hat", "black")
+// hashMap.set("ice cream", "white")
+// hashMap.set("jacket", "blue")
+// hashMap.set("kite", "pink")
+// hashMap.set("lion", "golden")
 
-hashMap.set("jacob", 5)
-hashMap.set("jAcob", 8)
-hashMap.set("jaCob", 19)
-console.log(hashMap.length)
-hashMap.set("job", 7)
-console.log(hashMap.get("job"))
 
-console.log(hashMap.buckets)
-hashMap.remove("jaCob")
+// console.log(hashMap.buckets)
+// console.log(hashMap.length)
+
+// hashMap.set("jacob", 5)
+// hashMap.set("jAcob", 8)
+// hashMap.set("jaCob", 19)
+// console.log(hashMap.length)
+// hashMap.set("job", 7)
+// console.log(hashMap.get("job"))
+
+// console.log(hashMap.buckets)
+// hashMap.remove("jaCob")
 
 // console.log(hashMap.keys())
 // console.log(hashMap.values())
