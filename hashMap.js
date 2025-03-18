@@ -130,6 +130,29 @@ class HashMap {
         this.capacity = 16;
         this._length = 0;
     };
+
+
+    #addEntryKeys(entry, keyArray) {
+        let current = entry;
+
+        while (current !== null) {
+            keyArray.push(current.key);
+            current = current.next;
+        }
+    };
+
+
+    keys() {
+        const keyArray = [];
+
+        for (let entry of this.buckets) {
+            if (entry !== undefined) {
+                this.#addEntryKeys(entry, keyArray);
+            }
+        }
+
+        return keyArray;
+    };
 };
 
 
@@ -141,12 +164,10 @@ hashMap.set("jacob", 5)
 hashMap.set("jAcob", 8)
 hashMap.set("jaCob", 19)
 console.log(hashMap.length)
-hashMap.set("jacob", 7)
+hashMap.set("job", 7)
 console.log(hashMap.length)
 
 console.log(hashMap.buckets)
+hashMap.remove("jaCob")
 
-hashMap.clear()
-
-console.log(hashMap.buckets)
-console.log(hashMap.length)
+console.log(hashMap.keys())
